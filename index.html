@@ -1,82 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小米运动健康AI个人助理</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="public/style_index.css">
+  <title>简易智能助手页面</title>
+  <link rel="stylesheet" href="public/index.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="module" src="src/main.js"></script> <!-- 引入外部JavaScript文件 -->
+  <script type="module" src="src/index.js"></script>
 </head>
+
 <body>
 <div class="container">
-  <div class="header">小米运动健康AI个人助理</div>
-  <div class="date-picker">
-    <label for="date">选择日期：</label>
-    <input type="date" id="date" name="date">
+  <div class="header">智能助手</div>
+  <div class="input-area">
+    <textarea id="input-textarea" placeholder="请输入内容，输入完成后按回车键提交"></textarea>
   </div>
-
-  <!-- 合并后的输出框 -->
-  <div id="combined-output">点击右侧按钮获取健康建议、饮食建议和运动建议</div>
-
-  <div class="buttons">
-    <button id="get-health-suggestion">获取健康建议</button>
-    <button id="get-diet-suggestion">获取饮食建议</button>
-    <button id="get-exercise-suggestion">获取运动建议</button>
+  <div class="function-tabs">
+    <div class="tab" data-function="health">获取健康建议</div>
+    <div class="tab" data-function="diet">获取饮食建议</div>
+    <div class="tab" data-function="exercise">获取运动建议</div>
   </div>
-
-  <!-- 数据展示区域 -->
-  <div class="data-columns">
-    <!-- 第一行：个人信息、今日饮食概览、今日运动概览 -->
-    <div class="column">
-      <div class="module" id="personal-info">
-        <h2>个人信息</h2>
-        <div class="value" id="personal-info-value">身高: -- cm<br>体重: -- kg<br>性别: --</div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="module" id="diet-info">
-        <h2>今日饮食概览</h2>
-        <div class="value" id="diet-info-value">-- kcal</div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="module" id="exercise-info">
-        <h2>今日运动概览</h2>
-        <div class="value" id="exercise-info-value">-- 运动量</div>
-      </div>
-    </div>
-
-    <!-- 第二行：心率概览和睡眠概览 -->
-    <div class="column">
-      <div class="module" id="heart-rate">
-        <h2>心率</h2>
-        <div class="value" id="heart-rate-value">-- 次/分钟</div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="module" id="sleep">
-        <h2>睡眠</h2>
-        <div class="value" id="sleep-value">-- 小时</div>
-      </div>
-    </div>
-
-    <!-- 第三行：步数概览和卡路里概览 -->
-    <div class="column">
-      <div class="module" id="steps">
-        <h2>步数</h2>
-        <div class="value" id="steps-value">-- 步</div>
-      </div>
-    </div>
-    <div class="column">
-      <div class="module" id="calories">
-        <h2>卡路里</h2>
-        <div class="value" id="calories-value">-- 千卡</div>
-      </div>
-    </div>
+  <div class="response-area" id="response-area"></div>
+  <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>正在加载，请稍候...</p>
   </div>
 </div>
-
 </body>
+
 </html>
