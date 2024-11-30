@@ -26,52 +26,96 @@
     <button id="get-diet-suggestion">获取饮食建议</button>
     <button id="get-exercise-suggestion">获取运动建议</button>
   </div>
-  <div class="foods">
-
+  <div class="diet">
+  <div class="module">
+    <h3>今日饮食</h3>
+    <div class="diet-list">
+      <div class="breakfast">
+        <div class="module">
+          <p>早餐</p>
+        </div>
+      </div>
+      <div class="lunch">
+        <div class="module">
+          <p>午餐</p>
+        </div>
+      </div>
+      <div class="dinner">
+        <div class="module">
+          <p>晚餐</p>
+        </div>
+      </div>
+  </div>
+  </div>
   </div>
   <!-- 数据展示区域 -->
   <div class="information">
     <!-- 第一行：个人信息、今日运动概览 -->
-    <div class="info">
+    <div class="personal-info">
         <div class="module" id="personal-info">
-          <h2>个人信息</h2>
-          <div class="value" id="personal-info-value">身高: -- cm<br>体重: -- kg<br>性别: --</div>
+          <div class="filling">
+            <h3>个人信息</h3>
+            <div class="value" id="personal-info-value">
+              身高: -- cm<br>
+              体重: -- kg<br>
+              性别: --
+            </div>
+          </div>
         </div>
     </div>
-    <div class="sports">
-        <div class="module" id="sports-info">
-          <h2>运动</h2>
-          <div class="value" id="sports-info-value">-- kcal</div>
+    <div class="exercise">
+        <div class="module" id=" exercise-info">
+          <div class="filling">
+          <h3>运动</h3>
+          <div class="value" id=" exercise-info-value">
+            -- kcal
+          </div>
+          </div>
         </div>
     </div>
     <!-- 第二行：心率概览和睡眠概览 -->
     <div class="heart-rate">
       <div class="module" id="heart-rate">
-        <h2>心率</h2>
-        <div class="value" id="heart-rate-info-value">-- 运动量</div>
+        <div class="filling">
+        <h3>心率</h3>
+        <div class="value" id="heart-rate-info-value">
+          -- 运动量
+        </div>
+        </div>
       </div>
     </div>
     <div class="sleep">
       <div class="module" id="sleep">
-        <h2>睡眠</h2>
-        <div class="value" id="sleep-value">-- 次/分钟</div>
+        <div class="filling">
+        <h3>睡眠</h3>
+        <div class="value" id="sleep-value">
+          -- 次/分钟
+        </div>
+        </div>
       </div>
     </div>
     <!-- 第三行：步数概览和卡路里概览 -->
     <div class="steps">
       <div class="module" id="steps">
-        <h2>步数</h2>
-        <div class="value" id="steps-value">-- 步</div>
+        <div class="filling">
+        <h3>步数</h3>
+        <div class="value" id="steps-value">
+          -- 步
+        </div>
+        </div>
       </div>
     </div>
     <div class="calories">
       <div class="module" id="calories">
-        <h2>卡路里</h2>
-        <div class="value" id="calories-value">-- 千卡</div>
+        <div class="filling">
+        <h3>卡路里</h3>
+        <div class="value" id="calories-value">
+          -- 千卡
+        </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
-
 </body>
 </html>

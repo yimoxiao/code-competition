@@ -16,15 +16,16 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
     display: grid;
-    grid-template-rows: 100px 300px 60px auto;
-    grid-auto-columns: 100%;
+    grid-template-rows: 100px 300px 60px 300px auto;
     grid-template-areas: "header"
-    "output" "buttons" "foods"
+    "output" "buttons" "diet" "information"
 }
 
 .information {
+    grid-area: information;
     display: grid;
-    grid-template-areas:"info sports"
+    grid-column-gap: 10px;
+    grid-template-areas:"personal-info exercise"
     "heart-rate sleep"
     "steps calories";
 }
@@ -65,6 +66,7 @@ body {
 }
 
 .buttons button {
+    width: 30%;
     margin: 5px;
     padding: 10px 15px;
     background-color: #f7941d;
@@ -85,12 +87,35 @@ body {
     transform: scale(0.95);
 }
 
-.info {
-    grid-area: info;
+.diet {
+    grid-area: diet;
 }
 
-.sports {
-    grid-area: sports;
+.diet-list{
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "breakfast lunch dinner";
+}
+
+.breakfast {
+    grid-area: breakfast;
+}
+
+.lunch {
+    grid-area: lunch;
+}
+
+.dinner {
+    grid-area: dinner;
+}
+
+.personal-info {
+    grid-area: personal-info;
+}
+
+.exercise {
+    grid-area: exercise;
 }
 
 .heart-rate {
@@ -118,6 +143,15 @@ body {
     color: #333;
     text-align: center;
     font-size: 1.1em;
+}
+
+.module h3 {
+    text-align: center;
+    margin-top: 1px;
+}
+
+.filling {
+    height: 120px;
 }
 
 #combined-output {
