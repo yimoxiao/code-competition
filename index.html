@@ -11,65 +11,60 @@
 </head>
 <body>
 <div class="container">
-  <div class="header">小米运动健康AI个人助理</div>
+  <div class="header">
+    <p>小米运动健康AI个人助理</p>
   <div class="date-picker">
     <label for="date">选择日期：</label>
     <input type="date" id="date" name="date">
   </div>
-
+  </div>
   <!-- 合并后的输出框 -->
-  <div id="combined-output">点击右侧按钮获取健康建议、饮食建议和运动建议</div>
+  <div class="output-box" id="combined-output">点击下方按钮获取健康建议、饮食建议和运动建议</div>
 
   <div class="buttons">
     <button id="get-health-suggestion">获取健康建议</button>
     <button id="get-diet-suggestion">获取饮食建议</button>
     <button id="get-exercise-suggestion">获取运动建议</button>
   </div>
+  <div class="foods">
 
+  </div>
   <!-- 数据展示区域 -->
-  <div class="data-columns">
-    <!-- 第一行：个人信息、今日饮食概览、今日运动概览 -->
-    <div class="column">
-      <div class="module" id="personal-info">
-        <h2>个人信息</h2>
-        <div class="value" id="personal-info-value">身高: -- cm<br>体重: -- kg<br>性别: --</div>
-      </div>
+  <div class="information">
+    <!-- 第一行：个人信息、今日运动概览 -->
+    <div class="info">
+        <div class="module" id="personal-info">
+          <h2>个人信息</h2>
+          <div class="value" id="personal-info-value">身高: -- cm<br>体重: -- kg<br>性别: --</div>
+        </div>
     </div>
-    <div class="column">
-      <div class="module" id="diet-info">
-        <h2>今日饮食概览</h2>
-        <div class="value" id="diet-info-value">-- kcal</div>
-      </div>
+    <div class="sports">
+        <div class="module" id="sports-info">
+          <h2>运动</h2>
+          <div class="value" id="sports-info-value">-- kcal</div>
+        </div>
     </div>
-    <div class="column">
-      <div class="module" id="exercise-info">
-        <h2>今日运动概览</h2>
-        <div class="value" id="exercise-info-value">-- 运动量</div>
-      </div>
-    </div>
-
     <!-- 第二行：心率概览和睡眠概览 -->
-    <div class="column">
+    <div class="heart-rate">
       <div class="module" id="heart-rate">
         <h2>心率</h2>
-        <div class="value" id="heart-rate-value">-- 次/分钟</div>
+        <div class="value" id="heart-rate-info-value">-- 运动量</div>
       </div>
     </div>
-    <div class="column">
+    <div class="sleep">
       <div class="module" id="sleep">
         <h2>睡眠</h2>
-        <div class="value" id="sleep-value">-- 小时</div>
+        <div class="value" id="sleep-value">-- 次/分钟</div>
       </div>
     </div>
-
     <!-- 第三行：步数概览和卡路里概览 -->
-    <div class="column">
+    <div class="steps">
       <div class="module" id="steps">
         <h2>步数</h2>
         <div class="value" id="steps-value">-- 步</div>
       </div>
     </div>
-    <div class="column">
+    <div class="calories">
       <div class="module" id="calories">
         <h2>卡路里</h2>
         <div class="value" id="calories-value">-- 千卡</div>
