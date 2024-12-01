@@ -1,3 +1,27 @@
+function handleUpLoadImgButtons() {
+    $('#breakfast-input').click(function (event) {
+        const selectedDate = $("#date").val();
+        if (!selectedDate) {
+            event.preventDefault();
+            alert("请选择一个日期！");
+        }
+    });
+    $('#lunch-input').click(function (event) {
+        const selectedDate = $("#date").val();
+        if (!selectedDate) {
+            event.preventDefault();
+            alert("请选择一个日期！");
+        }
+    });
+    $('#dinner-input').click(function (event) {
+        const selectedDate = $("#date").val();
+        if (!selectedDate) {
+            event.preventDefault();
+            alert("请选择一个日期！");
+        }
+    });
+}
+
 document.getElementById('breakfast-input').addEventListener('change', function () {
     const file = this.files[0];
     if (!file) {
@@ -27,3 +51,5 @@ document.getElementById('breakfast-input').addEventListener('change', function (
         }
     };
 });
+
+export{ handleUpLoadImgButtons };
