@@ -7,7 +7,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="public/style_index.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="module" src="src/main.js"></script> <!-- 引入外部JavaScript文件 -->
+  <!-- 引入外部JavaScript文件 -->
+  <script type="module" src="src/main.js"></script>
+  <script type="module" src="src/upLoadImg.js"></script>
 </head>
 <body>
 <div class="container">
@@ -33,16 +35,31 @@
       <div class="breakfast">
         <div class="module">
           <p>早餐</p>
+          <label id="breakfast-recognition">--<br></label>
+          <label class="input-label" for="breakfast-input">上传早餐</label>
+          <input id="breakfast-input" type="file" accept="image/*" style="display: none;">
+          <label class="input-label" for="breakfast-calibration">校准早餐</label>
+          <button id="breakfast-calibration" style="display: none;"></button>
         </div>
       </div>
       <div class="lunch">
         <div class="module">
           <p>午餐</p>
+          <label id="lunch-recognition">--<br></label>
+          <label class="input-label" for="lunch-input">上传午餐</label>
+          <input id="lunch-input" type="file" accept="image/*" style="display: none;">
+          <label class="input-label" for="lunch-calibration">校准午餐</label>
+          <input id="lunch-calibration" type="file" accept="image/*" style="display: none;">
         </div>
       </div>
       <div class="dinner">
         <div class="module">
           <p>晚餐</p>
+          <label id="dinner-recognition">--<br></label>
+          <label class="input-label" for="dinner-input">上传晚餐</label>
+          <input id="dinner-input" type="file" accept="image/*" style="display: none;">
+          <label class="input-label" for="dinner-calibration">校准晚餐</label>
+          <input id="dinner-calibration" type="file" accept="image/*" style="display: none;">
         </div>
       </div>
   </div>
@@ -56,9 +73,9 @@
           <div class="filling">
             <h3>个人信息</h3>
             <div class="value" id="personal-info-value">
+              性别: --<br>
               身高: -- cm<br>
-              体重: -- kg<br>
-              性别: --
+              体重: -- kg
             </div>
           </div>
         </div>
@@ -68,7 +85,7 @@
           <div class="filling">
           <h3>运动</h3>
           <div class="value" id=" exercise-info-value">
-            -- kcal
+            --
           </div>
           </div>
         </div>
@@ -78,8 +95,9 @@
       <div class="module" id="heart-rate">
         <div class="filling">
         <h3>心率</h3>
-        <div class="value" id="heart-rate-info-value">
-          -- 运动量
+        <div class="value" id="heart-rate-value">
+          今日心率 -- 次/分钟<br>
+          过去14天平均心率 -- 次/分钟
         </div>
         </div>
       </div>
@@ -89,7 +107,8 @@
         <div class="filling">
         <h3>睡眠</h3>
         <div class="value" id="sleep-value">
-          -- 次/分钟
+          今日睡眠 -- 小时<br>
+          过去14天平均睡眠 -- 小时
         </div>
         </div>
       </div>
@@ -100,7 +119,8 @@
         <div class="filling">
         <h3>步数</h3>
         <div class="value" id="steps-value">
-          -- 步
+          今日步数 -- 步<br>
+          过去14天平均步数 -- 步
         </div>
         </div>
       </div>

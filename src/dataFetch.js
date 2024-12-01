@@ -8,7 +8,7 @@ function handleDateChange() {
         if (!selectedDate) return;
         resetSuggestions();
         $.ajax({
-            url: "/get_data",
+            url: "http://10.189.140.61:18080/get_data",
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ date: selectedDate }),
@@ -16,6 +16,7 @@ function handleDateChange() {
                 if (response.error) {
                     alert(response.error);
                 } else {
+                    console.log(response);
                     updateModules(response);
                 }
             },
