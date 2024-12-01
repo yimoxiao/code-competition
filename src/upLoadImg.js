@@ -31,7 +31,6 @@ document.getElementById('breakfast-input').addEventListener('change', function (
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'http://10.189.140.61:18080/upload_breakfast', true);
-    xhr.setRequestHeader('Content-Type', 'multipart/form-data');
 
     const formData = new FormData();
 
