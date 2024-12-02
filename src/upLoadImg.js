@@ -159,4 +159,4 @@ function getDinner(){
     };
 }
 
-export{ handleUpLoadImgButtons };
+export{ handleUpLoadImgButtons, getBreakfast, getLunch ,getDinner };

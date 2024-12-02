@@ -2,6 +2,7 @@ import { resetSuggestions } from './suggestionReset.js';
 import { updateModules } from './moduleUpdate.js';
 import { typeText } from './textDisplay.js';
 import {getUsernameFromCookie} from "./cookie.js";
+import {getBreakfast, getDinner, getLunch} from "./upLoadImg.js";
 
 function handleDateChange() {
     $("#date").change(function () {
@@ -23,6 +24,9 @@ function handleDateChange() {
                 } else {
                     console.log(response);
                     updateModules(response);
+                    getBreakfast();
+                    getLunch();
+                    getDinner();
                 }
             },
             error: function () {

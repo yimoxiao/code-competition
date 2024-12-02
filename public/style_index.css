@@ -8,7 +8,6 @@ body {
 
 .container {
     width: 60%;
-    max-width: 1000px;
     margin: 20px auto;
     background: #fff;
     border-radius: 10px;
@@ -91,7 +90,7 @@ body {
     grid-area: diet;
 }
 
-.diet-list{
+.diet-list {
     display: grid;
     grid-column-gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -153,6 +152,31 @@ body {
 .module p {
     margin-top: 1px;
     margin-bottom: 10px;
+}
+
+.module textarea {
+    resize: none;
+    width: 80%;
+    height: 60px;
+    border: 1px solid #ccc;
+}
+
+.module textarea::-webkit-scrollbar {
+    width: 8px; /* 滚动条的宽度 */
+}
+
+.module textarea::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* 滚动条轨道的背景颜色 */
+}
+
+.module textarea::-webkit-scrollbar-thumb {
+    background-color: #f7941d; /* 滚动条滑块的背景颜色 */
+    border-radius: 5px; /* 滚动条滑块的圆角半径 */
+}
+
+.module textarea:focus {
+    outline: none;
+    border: 2px solid #ffa500; /* 用border属性来代替outline，提供聚焦指示 */
 }
 
 .filling {
