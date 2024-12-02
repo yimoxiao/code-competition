@@ -37,7 +37,7 @@ function fetchSuggestion(route, outputId) {
         return;
     }
     $.ajax({
-        url: route,
+        url: 'http://10.189.140.61:18080' + route,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ date: selectedDate }),

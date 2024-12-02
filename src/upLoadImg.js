@@ -8,6 +8,7 @@ function handleUpLoadImgButtons() {
             alert("请选择一个日期！");
         }
     });
+
     $('#lunch-input').click(function (event) {
         const selectedDate = $("#date").val();
         if (!selectedDate) {
@@ -15,6 +16,7 @@ function handleUpLoadImgButtons() {
             alert("请选择一个日期！");
         }
     });
+
     $('#dinner-input').click(function (event) {
         const selectedDate = $("#date").val();
         if (!selectedDate) {
@@ -30,7 +32,28 @@ document.getElementById('breakfast-input').addEventListener('change', function (
         console.log("未选择文件");
         return;
     }
+    upLoadImg(file);
+});
 
+document.getElementById('lunch-input').addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) {
+        console.log("未选择文件");
+        return;
+    }
+    upLoadImg(file);
+});
+
+document.getElementById('dinner-input').addEventListener('change', function () {
+    const file = this.files[0];
+    if (!file) {
+        console.log("未选择文件");
+        return;
+    }
+    upLoadImg(file);
+});
+
+function upLoadImg(file) {
     var username = getUsernameFromCookie();
 
     const xhr = new XMLHttpRequest();
@@ -53,6 +76,6 @@ document.getElementById('breakfast-input').addEventListener('change', function (
             console.log('请求失败，状态码：', xhr.status);
         }
     };
-});
+}
 
 export{ handleUpLoadImgButtons };
