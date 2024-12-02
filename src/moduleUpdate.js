@@ -10,4 +10,19 @@ function updateModules(response) {
     $("#calories-value").text(`${data.calories} 千卡`);
 }
 
-export { updateModules };
+function setBreakfastImgAnalyze(response) {
+    const data = response.data;
+    $("#breakfast-recognition").text(`${data}`);
+}
+
+function setLunchImgAnalyze(response) {
+    const data = response.data;
+    $("#lunch-recognition").text(`${data}`);
+}
+
+function setDinnerImgAnalyze(response) {
+    const data = response.data;
+    $("#dinner-recognition").text(`${data}`);
+}
+
+export { updateModules, setBreakfastImgAnalyze, setLunchImgAnalyze, setDinnerImgAnalyze };
