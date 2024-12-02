@@ -1,4 +1,5 @@
-// 获取登录表单元素
+import { saveUsernameToCookie } from "./cookie.js";
+
 const loginForm = document.getElementById('loginForm');
 // 获取加载提示框元素
 const loadingOverlay = document.getElementById('loadingOverlay');
@@ -28,7 +29,7 @@ loginForm.addEventListener('submit', function (e) {
             console.log('请求成功，响应内容：', xhr.responseText);
             const username = document.getElementById('username').value;
 
-            localStorage.setItem("user_name", username);
+            saveUsernameToCookie(username);
             window.location.href = 'index.html';
             // 隐藏加载提示框
             loadingOverlay.style.display = 'none';

@@ -12,6 +12,9 @@ function handleDateChange() {
             type: "POST",
             contentType: "application/json",
             data: JSON.stringify({ date: selectedDate }),
+            xhrFields: {
+                withCredentials: true
+            },
             success: function (response) {
                 if (response.error) {
                     alert(response.error);
