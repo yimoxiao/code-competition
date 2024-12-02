@@ -27,7 +27,9 @@ loginForm.addEventListener('submit', function (e) {
         if (xhr.readyState === 4 && xhr.status === 200) {
             console.log('请求成功，响应内容：', xhr.responseText);
             const username = document.getElementById('username').value;
-            window.location.href = 'index.html?username=' + username;
+
+            localStorage.setItem("user_name", username);
+            window.location.href = 'index.html';
             // 隐藏加载提示框
             loadingOverlay.style.display = 'none';
         } else if (xhr.readyState === 4) {

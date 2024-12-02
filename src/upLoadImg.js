@@ -39,6 +39,8 @@ document.getElementById('breakfast-input').addEventListener('change', function (
     formData.append('date', date);
     formData.append('photo', file.name);
 
+    xhr.withCredentials = true;
+
     xhr.send(formData);
 
     xhr.onreadystatechange = function () {
