@@ -13,114 +13,193 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(username);
 });
 
-document.getElementById("breakfast-button").addEventListener("click", function () {
-    document.getElementById('breakfast-input').click();
+// document.getElementById("breakfast-button").addEventListener("click", function () {
+//     document.getElementById('breakfast-input').click();
+// });
+//
+// document.getElementById("lunch-button").addEventListener("click", function () {
+//     document.getElementById('lunch-input').click();
+// });
+//
+// document.getElementById("dinner-button").addEventListener("click", function () {
+//     document.getElementById('dinner-input').click();
+// });
+
+// document.getElementById("breakfast-calibration").addEventListener("click", function () {
+//     breakfastCalibration();
+// });
+//
+// document.getElementById("lunch-calibration").addEventListener("click", function () {
+//     lunchCalibration();
+// });
+//
+// document.getElementById("dinner-calibration").addEventListener("click", function () {
+//     dinnerCalibration();
+// });
+
+
+function bindButtonToInputClick(buttonId, inputId) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+        button.addEventListener("click", function () {
+            const input = document.getElementById(inputId);
+            if (input) {
+                input.click();
+            }
+        });
+    }
+}
+
+function bindCalibrationButtonClick(calibrationButtonId, calibrationFunction) {
+    const button = document.getElementById(calibrationButtonId);
+    if (button) {
+        button.addEventListener("click", function () {
+            calibrationFunction();
+        });
+    }
+}
+
+const buttonInputPairs = [
+    { buttonId: "breakfast-button", inputId: "breakfast-input" },
+    { buttonId: "lunch-button", inputId: "lunch-input" },
+    { buttonId: "dinner-button", inputId: "dinner-input" }
+];
+
+const calibrationFunctions = {
+    "breakfast-calibration": breakfastCalibration,
+    "lunch-calibration": lunchCalibration,
+    "dinner-calibration": dinnerCalibration
+};
+
+buttonInputPairs.forEach(({ buttonId, inputId }) => {
+    bindButtonToInputClick(buttonId, inputId);
 });
 
-document.getElementById("lunch-button").addEventListener("click", function () {
-    document.getElementById('lunch-input').click();
+calibrationFunctions.forEach((calibrationButtonId, calibrationFunction) => {
+    bindCalibrationButtonClick(calibrationButtonId, calibrationFunction);
 });
 
-document.getElementById("dinner-button").addEventListener("click", function () {
-    document.getElementById('dinner-input').click();
-});
 
-document.getElementById("breakfast-calibration").addEventListener("click", function () {
-    breakfastCalibration();
-});
 
-document.getElementById("lunch-calibration").addEventListener("click", function () {
-    lunchCalibration();
-});
+// function breakfastCalibration() {
+//
+//     const username = getUsernameFromCookie();
+//     const date = document.getElementById('date').value;
+//     const change = document.getElementById('breakfast-recognition').value;
+//
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', 'http://10.189.140.61:18080/config_breakfast', true);
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//
+//     const data = {
+//         user_name: username,
+//         date: date,
+//         change: change,
+//     };
+//
+//     const jsonData = JSON.stringify(data);
+//
+//     xhr.send(jsonData);
+//
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//             console.log('请求成功，响应内容：', xhr.responseText);
+//             document.getElementById('breakfast-recognition').innerHTML = xhr.responseText;
+//         } else if (xhr.readyState === 4) {
+//             console.log('请求失败，状态码：', xhr.status);
+//         }
+//     };
+// }
+//
+// function lunchCalibration() {
+//     const username = getUsernameFromCookie();
+//     const date = document.getElementById('date').value;
+//     const change = document.getElementById('lunch-recognition').value;
+//
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', 'http://10.189.140.61:18080/config_lunch', true);
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//
+//     const data = {
+//         user_name: username,
+//         date: date,
+//         change: change,
+//     };
+//
+//     const jsonData = JSON.stringify(data);
+//
+//     xhr.send(jsonData);
+//
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//             console.log('请求成功，响应内容：', xhr.responseText);
+//             document.getElementById('lunch-recognition').innerHTML = xhr.responseText;
+//         } else if (xhr.readyState === 4) {
+//             console.log('请求失败，状态码：', xhr.status);
+//         }
+//     };
+// }
+//
+// function dinnerCalibration() {
+//     const username = getUsernameFromCookie();
+//     const date = document.getElementById('date').value;
+//     const change = document.getElementById('dinner-recognition').value;
+//
+//     const xhr = new XMLHttpRequest();
+//     xhr.open('POST', 'http://10.189.140.61:18080/config_dinner', true);
+//     xhr.setRequestHeader('Content-Type', 'application/json');
+//
+//     const data = {
+//         user_name: username,
+//         date: date,
+//         change: change,
+//     };
+//
+//     const jsonData = JSON.stringify(data);
+//
+//     xhr.send(jsonData);
+//
+//     xhr.onreadystatechange = function () {
+//         if (xhr.readyState === 4 && xhr.status === 200) {
+//             console.log('请求成功，响应内容：', xhr.responseText);
+//             document.getElementById('dinner-recognition').innerHTML = xhr.responseText;
+//         } else if (xhr.readyState === 4) {
+//             console.log('请求失败，状态码：', xhr.status);
+//         }
+//     };
+// }
 
-document.getElementById("dinner-calibration").addEventListener("click", function () {
-    dinnerCalibration();
-});
+function makeCalibrationRequest(endpoint, recognitionId) {
+    const username = getUsernameFromCookie();
+    const date = $('#date').val();
+    const change = $('#' + recognitionId).val();
+
+    $.ajax({
+        url: endpoint,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            user_name: username,
+            date: date,
+            change: change
+        }),
+        success: function (result) {
+            console.log('请求成功，响应内容：', result);
+            $('#' + recognitionId).html(result);
+        },
+        error: function (error) {
+            console.log('请求失败，状态码：', error.status);
+            // 可以在这里添加更多错误处理逻辑，比如给用户提示等
+        }
+    });
+}
 
 function breakfastCalibration() {
-
-    const username = getUsernameFromCookie();
-    const date = document.getElementById('date').value;
-    const change = document.getElementById('breakfast-recognition').value;
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/config_breakfast', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    const data = {
-        user_name: username,
-        date: date,
-        change: change,
-    };
-
-    const jsonData = JSON.stringify(data);
-
-    xhr.send(jsonData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('请求成功，响应内容：', xhr.responseText);
-            document.getElementById('breakfast-recognition').innerHTML = xhr.responseText;
-        } else if (xhr.readyState === 4) {
-            console.log('请求失败，状态码：', xhr.status);
-        }
-    };
+    makeCalibrationRequest('http://10.189.140.61:18080/config_breakfast', 'breakfast-recognition');
 }
-
 function lunchCalibration() {
-    const username = getUsernameFromCookie();
-    const date = document.getElementById('date').value;
-    const change = document.getElementById('lunch-recognition').value;
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/config_lunch', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    const data = {
-        user_name: username,
-        date: date,
-        change: change,
-    };
-
-    const jsonData = JSON.stringify(data);
-
-    xhr.send(jsonData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('请求成功，响应内容：', xhr.responseText);
-            document.getElementById('lunch-recognition').innerHTML = xhr.responseText;
-        } else if (xhr.readyState === 4) {
-            console.log('请求失败，状态码：', xhr.status);
-        }
-    };
+    makeCalibrationRequest('http://10.189.140.61:18080/config_lunch', 'lunch-recognition');
 }
-
 function dinnerCalibration() {
-    const username = getUsernameFromCookie();
-    const date = document.getElementById('date').value;
-    const change = document.getElementById('dinner-recognition').value;
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/config_dinner', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    const data = {
-        user_name: username,
-        date: date,
-        change: change,
-    };
-
-    const jsonData = JSON.stringify(data);
-
-    xhr.send(jsonData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('请求成功，响应内容：', xhr.responseText);
-            document.getElementById('dinner-recognition').innerHTML = xhr.responseText;
-        } else if (xhr.readyState === 4) {
-            console.log('请求失败，状态码：', xhr.status);
-        }
-    };
+    makeCalibrationRequest('http://10.189.140.61:18080/config_dinner', 'dinner-recognition');
 }
