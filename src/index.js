@@ -11,3 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     console.log(username);
 });
+
+document.getElementById("breakfast-button").addEventListener("click", function () {
+    document.getElementById('breakfast-input').click();
+});
+
+document.getElementById("lunch-button").addEventListener("click", function () {
+    document.getElementById('lunch-input').click();
+});
+
+document.getElementById("dinner-button").addEventListener("click", function () {
+    document.getElementById('dinner-input').click();
+});

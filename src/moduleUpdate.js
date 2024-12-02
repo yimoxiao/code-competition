@@ -12,17 +12,17 @@ function updateModules(response) {
 
 function setBreakfastImgAnalyze(response) {
     const data = response.data;
-    $("#breakfast-recognition").text(`${data}`);
+    $("#breakfast-recognition").html(`${data}<br>`);
 }
 
 function setLunchImgAnalyze(response) {
     const data = response.data;
-    $("#lunch-recognition").text(`${data}`);
+    $("#lunch-recognition").text(`${data}<br>`);
 }
 
 function setDinnerImgAnalyze(response) {
     const data = response.data;
-    $("#dinner-recognition").text(`${data}`);
+    $("#dinner-recognition").text(`${data}<br>`);
 }
 
 export { updateModules, setBreakfastImgAnalyze, setLunchImgAnalyze, setDinnerImgAnalyze };
