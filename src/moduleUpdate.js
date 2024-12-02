@@ -1,4 +1,5 @@
-function updateModules(data) {
+function updateModules(response) {
+    const data = response.data;
     $("#personal-info-value").html(
         `身高: ${data.height} cm<br>体重: ${data.weight} kg<br>性别: ${data.gender}`
     );

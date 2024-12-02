@@ -66,6 +66,7 @@ function upLoadImg(file) {
 
     formData.append('date', date);
     formData.append('photo', file);
+    formData.append('user_name', username);
 
     xhr.send(formData);
 
