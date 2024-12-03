@@ -1,5 +1,5 @@
 import {getUsernameFromCookie, saveUsernameToCookie} from "./cookie.js";
-import {setBreakfastImgAnalyze, setDinnerImgAnalyze, setLunchImgAnalyze} from "./moduleUpdate.js";
+import {setBreakfastImgAnalyze, setDinnerImgAnalyze, setLunchImgAnalyze, updateModules} from "./moduleUpdate.js";
 
 function handleUpLoadImgButtons() {
     $('#breakfast-input').click(function (event) {
@@ -89,74 +89,83 @@ function upLoadImg(file, id) {
 
 function getBreakfast() {
     console.log("getBreakfast");
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/get_breakfast', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.withCredentials = true;
-
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
     const data = {date: date , user_name: username};
-    const jsonData = JSON.stringify(data);
+    $.ajax({
+        url: "http://10.189.140.61:18080/get_breakfast",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({date: date , user_name: username}),
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function (response) {
+            if (response.error) {
+                alert(response.error);
+            } else {
+                console.log('请求成功，响应内容：', response);
+                setBreakfastImgAnalyze(response);
+            }
+        },
+        error: function () {
 
-    xhr.send(jsonData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('请求成功，响应内容：', xhr.responseText);
-            setBreakfastImgAnalyze(xhr.responseText);
-        } else if (xhr.readyState === 4) {
-            console.log('请求失败，状态码：', xhr.status);
         }
-    };
+    });
 }
 
 function getLunch(){
     console.log("getLunch");
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/get_lunch', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.withCredentials = true;
-
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
     const data = {date: date , user_name: username};
-    const jsonData = JSON.stringify(data);
+    $.ajax({
+        url: "http://10.189.140.61:18080/get_lunch",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({date: date , user_name: username}),
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function (response) {
+            if (response.error) {
+                alert(response.error);
+            } else {
+                console.log('请求成功，响应内容：', response);
+                setLunchImgAnalyze(response);
+            }
+        },
+        error: function () {
 
-    xhr.send(jsonData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('请求成功，响应内容：', xhr.responseText);
-            setLunchImgAnalyze(xhr.responseText);
-        } else if (xhr.readyState === 4) {
-            console.log('请求失败，状态码：', xhr.status);
         }
-    };
+    });
 }
 
 function getDinner(){
     console.log("getDinner");
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/get_dinner', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.withCredentials = true;
-
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
     const data = {date: date , user_name: username};
-    const jsonData = JSON.stringify(data);
+    $.ajax({
+        url: "http://10.189.140.61:18080/get_dinner",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({date: date , user_name: username}),
+        xhrFields: {
+            withCredentials: true
+        },
+        success: function (response) {
+            if (response.error) {
+                alert(response.error);
+            } else {
+                console.log('请求成功，响应内容：', response);
+                setDinnerImgAnalyze(response);
+            }
+        },
+        error: function () {
 
-    xhr.send(jsonData);
-
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            console.log('请求成功，响应内容：', xhr.responseText);
-            setDinnerImgAnalyze(xhr.responseText);
-        } else if (xhr.readyState === 4) {
-            console.log('请求失败，状态码：', xhr.status);
         }
-    };
+    });
 }
 
 export{ handleUpLoadImgButtons, getBreakfast, getLunch ,getDinner };
