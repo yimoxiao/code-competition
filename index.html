@@ -19,6 +19,14 @@
   <div class="date-picker">
     <label for="date">选择日期：</label>
     <input type="date" id="date" name="date">
+    <script>
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = String(today.getMonth() + 1).padStart(2, '0'); // 月份从0开始，+1
+      const day = String(today.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+      document.getElementById("date").setAttribute("max", formattedDate);
+    </script>
   </div>
   </div>
   <!-- 合并后的输出框 -->
