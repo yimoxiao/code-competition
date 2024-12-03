@@ -74,7 +74,6 @@ function makeCalibrationRequest(endpoint, recognitionId) {
         },
         error: function (error) {
             console.log('请求失败，状态码：', error.status);
-            // 可以在这里添加更多错误处理逻辑，比如给用户提示等
         }
     });
 }

@@ -8,36 +8,6 @@ function updateModules(response) {
     $("#sleep-value").text(`${data.sleep_hours} 小时`);
     $("#steps-value").text(`${data.steps} 步`);
     $("#calories-value").text(`${data.calories} 千卡`);
-    sendDataToServer(response)
-}
-
-function sendDataToServer(response) {
-    const data = response.data;
-    const storeData = {
-        "height": data.height,
-        "weight": data.weight,
-        "gender": data.gender,
-        "exercise": data.exercise,
-        "heart_rate": data.heart_rate,
-        "sleep_hours": data.sleep_hours,
-        "steps": data.steps,
-        "calories": data.calories
-    };
-
-    $.ajax({
-        //TODO: new url ?
-        url: 'http://10.189.140.61:18080/',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(storeData),
-        success: function (result) {
-            console.log('success! result code：', result);
-            $('#lunch-recognition').html(result);
-        },
-        error: function (error) {
-            console.log('error! error code：', error.status);
-        }
-    });
 }
 
 function setBreakfastImgAnalyze(response) {

@@ -3,6 +3,7 @@ import { updateModules } from './moduleUpdate.js';
 import { typeText } from './textDisplay.js';
 import {getUsernameFromCookie} from "./cookie.js";
 import {getBreakfast, getDinner, getLunch} from "./upLoadImg.js";
+import {saveInStorage} from "./storage.js";
 
 function handleDateChange() {
     $("#date").change(function () {
@@ -24,6 +25,7 @@ function handleDateChange() {
                 } else {
                     console.log(response);
                     updateModules(response);
+                    saveInStorage(response.data);
                     getBreakfast();
                     getLunch();
                     getDinner();
@@ -36,42 +38,4 @@ function handleDateChange() {
     });
 }
 
-function fetchSuggestion(route, outputId) {
-    const selectedDate = $("#date").val();
-    if (!selectedDate) {
-        alert("请选择一个日期！");
-        return;
-    }
-    $.ajax({
-        url: 'http://10.189.140.61:18080' + route,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({ date: selectedDate }),
-        success: function (response) {
-            if (response.error) {
-                alert(response.error);
-            } else {
-                typeText(outputId, response[Object.keys(response)[0]], 50);
-            }
-        },
-        error: function () {
-            alert("请求失败，请稍后重试！");
-        }
-    });
-}
-
-function handleSuggestionButtons() {
-    $("#get-health-suggestion").click(function () {
-        fetchSuggestion("/get_health_suggestion", "combined-output");
-    });
-
-    $("#get-diet-suggestion").click(function () {
-        fetchSuggestion("/get_diet_suggestion", "combined-output");
-    });
-
-    $("#get-exercise-suggestion").click(function () {
-        fetchSuggestion("/get_exercise-suggestion", "combined-output");
-    });
-}
-
-export { handleDateChange, handleSuggestionButtons };
+export { handleDateChange };
