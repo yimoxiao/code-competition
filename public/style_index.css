@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-    width: 60%;
+    width: 900px;
     margin: 20px auto;
     background: #fff;
     border-radius: 10px;
@@ -15,7 +15,7 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
     display: grid;
-    grid-template-rows: 100px 300px 60px 300px auto;
+    grid-template-rows: 100px auto auto auto auto;
     grid-template-areas: "header"
     "output" "buttons" "diet" "information"
 }
@@ -24,9 +24,20 @@ body {
     grid-area: information;
     display: grid;
     grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:"personal-info exercise"
     "heart-rate sleep"
     "steps calories";
+}
+
+.title {
+    display: flex;
+}
+.title img {
+    width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    margin-top: 2px;
 }
 
 .header {
@@ -54,8 +65,36 @@ body {
     border-radius: 5px;
 }
 
-.output-box {
+.output {
     grid-area: output;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas: "output-box output-image";
+}
+
+.output-box {
+    grid-area: output-box;
+    height: 250px;
+    width: 550px;
+    border: 2px solid #f7941d;
+    border-radius: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.output-image{
+    grid-area: output-image;
+    height: 280px;
+    width: 280px;
+}
+
+.output-image img{
+    height: 100%;
+    width: 100%;
 }
 
 .buttons {
@@ -181,15 +220,4 @@ body {
 
 .filling {
     height: 120px;
-}
-
-#combined-output {
-    border: 2px solid #f7941d;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    color: #333;
-    font-size: 1.2em;
-    text-align: center;
 }
