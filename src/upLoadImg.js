@@ -33,7 +33,7 @@ document.getElementById('breakfast-input').addEventListener('change', function (
         console.log("未选择文件");
         return;
     }
-    upLoadImg(file, 'breakfast-input', '/get_breakfast');
+    upLoadImg(file, 'breakfast-input', '/upload_breakfast');
 });
 
 document.getElementById('lunch-input').addEventListener('change', function () {
@@ -42,7 +42,7 @@ document.getElementById('lunch-input').addEventListener('change', function () {
         console.log("未选择文件");
         return;
     }
-    upLoadImg(file, 'lunch-input', '/get_lunch');
+    upLoadImg(file, 'lunch-input', '/upload_lunch');
 });
 
 document.getElementById('dinner-input').addEventListener('change', function () {
@@ -51,7 +51,7 @@ document.getElementById('dinner-input').addEventListener('change', function () {
         console.log("未选择文件");
         return;
     }
-    upLoadImg(file, 'dinner-input', '/get_dinner');
+    upLoadImg(file, 'dinner-input', '/upload_dinner');
 });
 
 function upLoadImg(file, id, uri) {
