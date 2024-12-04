@@ -1,13 +1,16 @@
 function updateModules(response) {
     const data = response.data;
     $("#personal-info-value").html(
-        `身高: ${data.height} cm<br>体重: ${data.weight} kg<br>性别: ${data.sex}`
+        `身高: ${data.height} cm<br>
+        体重: ${data.weight} kg<br>
+        性别: ${data.sex}`
     );
     $("#exercise-info-value").text(`${data.exercise}`);
     $("#heart-rate-value").text(`${data.heart_rate} 次/分钟`);
-    $("#sleep-value").text(`${data.sleep_hours} 小时`);
+    $("#sleep-value").text(`${data.sleep} 分钟`);
     $("#steps-value").text(`${data.steps} 步`);
     $("#calories-value").text(`${data.calories} 千卡`);
+    $("#fit-image").attr("src", "public/fit_rabbit/" + data.emotion + ".png");
 }
 
 function setBreakfastImgAnalyze(response) {
