@@ -33,7 +33,7 @@ document.getElementById('breakfast-input').addEventListener('change', function (
         console.log("未选择文件");
         return;
     }
-    upLoadImg(file, 'breakfast-input');
+    upLoadImg(file, 'breakfast-input', '/get_breakfast');
 });
 
 document.getElementById('lunch-input').addEventListener('change', function () {
@@ -42,7 +42,7 @@ document.getElementById('lunch-input').addEventListener('change', function () {
         console.log("未选择文件");
         return;
     }
-    upLoadImg(file, 'lunch-input');
+    upLoadImg(file, 'lunch-input', '/get_lunch');
 });
 
 document.getElementById('dinner-input').addEventListener('change', function () {
@@ -51,14 +51,14 @@ document.getElementById('dinner-input').addEventListener('change', function () {
         console.log("未选择文件");
         return;
     }
-    upLoadImg(file, 'dinner-input');
+    upLoadImg(file, 'dinner-input', '/get_dinner');
 });
 
-function upLoadImg(file, id) {
+function upLoadImg(file, id, uri) {
     var username = getUsernameFromCookie();
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'http://10.189.140.61:18080/upload_breakfast', true);
+    xhr.open('POST', 'http://10.189.140.61:18080' + uri, true);
     xhr.withCredentials = true;
 
     const formData = new FormData();
