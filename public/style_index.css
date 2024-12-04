@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(120deg, #f6d365, #fda085);
+    background: linear-gradient(120deg, #fff, #fff);
     overflow-x: hidden;
 }
 
@@ -12,7 +12,7 @@ body {
     background: #fff;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
     position: relative;
     display: grid;
     grid-template-rows: 100px auto auto auto auto;
@@ -83,7 +83,6 @@ body {
     background-color: #fff;
     color: #333;
     font-size: 1.2em;
-    text-align: center;
 }
 
 .output-image{
@@ -173,11 +172,11 @@ body {
 }
 
 .module {
-    border: 2px solid #f7941d;
+    border: 2px solid #ffffff;
+    background-color: rgba(232, 229, 224, 0.4);
     border-radius: 12px;
     padding: 20px;
     margin: 10px 0;
-    background-color: #fff;
     color: #333;
     text-align: center;
     font-size: 1.1em;
@@ -221,3 +220,19 @@ body {
 .filling {
     height: 120px;
 }
+
+.output-textarea {
+    resize: none;
+
+    height: 100%;
+    width: 100%;
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+}
+
+.output-textarea:focus {
+    resize: none;
+}
+
+

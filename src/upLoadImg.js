@@ -87,19 +87,15 @@ function upLoadImg(file, id, uri) {
     };
 }
 
-function getBreakfast() {
+function getBreakfast(is_active = false) {
     console.log("getBreakfast");
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
-    const data = {date: date , user_name: username};
     $.ajax({
         url: "http://10.189.140.61:18080/get_breakfast",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({date: date , user_name: username}),
-        xhrFields: {
-            withCredentials: true
-        },
+        data: JSON.stringify({date: date , user_name: username, cache: is_active}),
         success: function (response) {
             if (response.error) {
                 alert(response.error);
@@ -114,16 +110,15 @@ function getBreakfast() {
     });
 }
 
-function getLunch(){
+function getLunch(is_active = false) {
     console.log("getLunch");
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
-    const data = {date: date , user_name: username};
     $.ajax({
         url: "http://10.189.140.61:18080/get_lunch",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({date: date , user_name: username}),
+        data: JSON.stringify({date: date , user_name: username, cache: is_active}),
         xhrFields: {
             withCredentials: true
         },
@@ -141,16 +136,15 @@ function getLunch(){
     });
 }
 
-function getDinner(){
+function getDinner(is_active = false) {
     console.log("getDinner");
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
-    const data = {date: date , user_name: username};
     $.ajax({
         url: "http://10.189.140.61:18080/get_dinner",
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({date: date , user_name: username}),
+        data: JSON.stringify({date: date , user_name: username, cache: is_active}),
         xhrFields: {
             withCredentials: true
         },

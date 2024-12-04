@@ -1,6 +1,5 @@
-import {getUsernameFromCookie, saveUsernameToCookie} from "./cookie.js";
-import {setDinnerImgAnalyze} from "./moduleUpdate.js";
-// 登录
+import {getUsernameFromCookie} from "./cookie.js";
+
 document.addEventListener('DOMContentLoaded', function () {
     // 从localStorage中获取用户名
     var username = getUsernameFromCookie();
@@ -42,15 +41,15 @@ const buttonInputPairs = [
 
 const calibrationFunctions = [
     {calibrationButtonId: "breakfast-calibration", calibrationFunction: breakfastCalibration},
-    {calibrationButtonId: "lunch-button", calibrationFunction: lunchCalibration},
-    {calibrationButtonId: "dinner-button", calibrationFunction: dinnerCalibration},
+    {calibrationButtonId: "lunch-calibration", calibrationFunction: lunchCalibration},
+    {calibrationButtonId: "dinner-calibration", calibrationFunction: dinnerCalibration},
 ];
 
 buttonInputPairs.forEach(({buttonId, inputId}) => {
     bindButtonToInputClick(buttonId, inputId);
 });
 
-calibrationFunctions.forEach((calibrationButtonId, calibrationFunction) => {
+calibrationFunctions.forEach(({calibrationButtonId, calibrationFunction}) => {
     bindCalibrationButtonClick(calibrationButtonId, calibrationFunction);
 });
 
@@ -58,7 +57,6 @@ function makeCalibrationRequest(endpoint, recognitionId) {
     const username = getUsernameFromCookie();
     const date = $('#date').val();
     const change = $('#' + recognitionId).val();
-
     $.ajax({
         url: endpoint,
         type: 'POST',
@@ -70,7 +68,7 @@ function makeCalibrationRequest(endpoint, recognitionId) {
         }),
         success: function (result) {
             console.log('请求成功，响应内容：', result);
-            $('#' + recognitionId).html(result);
+            $('#' + recognitionId).text(result.data);
         },
         error: function (error) {
             console.log('请求失败，状态码：', error.status);

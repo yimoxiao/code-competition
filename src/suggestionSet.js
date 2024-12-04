@@ -1,4 +1,5 @@
 import {typeText} from "./textDisplay.js";
+import {getUsernameFromCookie} from "./cookie.js";
 
 function fetchSuggestion(route, outputId) {
     const selectedDate = $("#date").val();
@@ -6,16 +7,17 @@ function fetchSuggestion(route, outputId) {
         alert("请选择一个日期！");
         return;
     }
+    const username = getUsernameFromCookie();
     $.ajax({
         url: 'http://10.189.140.61:18080' + route,
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ date: selectedDate }),
+        data: JSON.stringify({ date: selectedDate , user_name: username , cache : false}),
         success: function (response) {
             if (response.error) {
                 alert(response.error);
             } else {
-                typeText(outputId, response[Object.keys(response)[0]], 50);
+                typeText(outputId, response.data, 50);
             }
         },
         error: function () {

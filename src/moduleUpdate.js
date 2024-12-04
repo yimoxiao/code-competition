@@ -1,7 +1,7 @@
 function updateModules(response) {
     const data = response.data;
     $("#personal-info-value").html(
-        `身高: ${data.height} cm<br>体重: ${data.weight} kg<br>性别: ${data.gender}`
+        `身高: ${data.height} cm<br>体重: ${data.weight} kg<br>性别: ${data.sex}`
     );
     $("#exercise-info-value").text(`${data.exercise}`);
     $("#heart-rate-value").text(`${data.heart_rate} 次/分钟`);
