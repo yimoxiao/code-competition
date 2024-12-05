@@ -7,17 +7,34 @@ function fetchSuggestion(route, outputId) {
         alert("请选择一个日期！");
         return;
     }
+    var data;
     const username = getUsernameFromCookie();
+    if(route === "/get_health_suggestion") {
+        data = { date: selectedDate , user_name: username , cache : false};
+    } else if(route === "/get_diet_suggestion") {
+        const food1 = $("#breakfast-recognition").val();
+        const food2 = $("#lunch-recognition").val();
+        const food3 = $("#dinner-recognition").val();
+        data = {date: selectedDate , user_name: username , food1: food1, food2: food2, food3 : food3, cache : false};
+        console.log(data);
+    } else {
+        var aim =  $("#exercise-info-value").text();
+        if(aim === "--" ){
+            aim = "";
+        }
+        data = {date: selectedDate , user_name: username , aim: aim, cache : false};
+    }
     $.ajax({
         url: 'http://10.189.140.61:18080' + route,
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ date: selectedDate , user_name: username , cache : false}),
+        data: JSON.stringify(data),
         success: function (response) {
             if (response.error) {
                 alert(response.error);
             } else {
-                typeText(outputId, response.data, 50);
+                console.log(response);
+                typeText(outputId, response.data, 100);
             }
         },
         error: function () {
@@ -36,7 +53,7 @@ function handleSuggestionButtons() {
     });
 
     $("#get-exercise-suggestion").click(function () {
-        fetchSuggestion("/get_exercise-suggestion", "combined-output");
+        fetchSuggestion("/get_exercise_suggestion", "combined-output");
     });
 }
 

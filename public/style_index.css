@@ -41,6 +41,17 @@ body {
     margin-top: 2px;
 }
 
+.info-title {
+    display: flex;
+    text-align: center;
+    column-gap: 10px;
+}
+
+.info-title img {
+    width: 30px;
+    height: 30px;
+}
+
 .username {
     margin-left: auto;
     padding: 20px;

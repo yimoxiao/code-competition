@@ -7,9 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/style_index.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!--    一定为3.07-->
     <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
-    <!-- 引入外部JavaScript文件 -->
     <script type="module" src="src/index.js"></script>
     <script type="module" src="src/main.js"></script>
     <script type="module" src="src/upLoadImg.js"></script>
@@ -82,13 +80,15 @@
             </div>
         </div>
     </div>
-    <!-- 数据展示区域 -->
     <div class="information">
         <!-- 第一行：个人信息、今日运动概览 -->
         <div class="personal-info">
             <div class="module" id="personal-info">
                 <div class="filling">
-                    <h3>个人信息</h3>
+                    <div class="info-title">
+                        <img src="public/icon/personal_info.png" alt="personal_info" id="personal-info-img">
+                        <h3>个人信息</h3>
+                    </div>
                     <div class="value" id="personal-info-value">
                         性别: --<br>
                         身高: -- cm<br>
@@ -98,10 +98,13 @@
             </div>
         </div>
         <div class="exercise">
-            <div class="module" id=" exercise-info">
+            <div class="module" id="exercise-info">
                 <div class="filling">
-                    <h3>运动</h3>
-                    <div class="value" id=" exercise-info-value">
+                    <div class="info-title">
+                        <img src="public/icon/exercise.png" alt="exercise" id="exercise-img">
+                        <h3>运动</h3>
+                    </div>
+                    <div class="value" id="exercise-info-value">
                         --
                     </div>
                 </div>
@@ -111,7 +114,10 @@
         <div class="heart-rate">
             <div class="module" id="heart-rate">
                 <div class="filling">
-                    <h3>心率</h3>
+                    <div class="info-title">
+                        <img src="public/icon/heart_rate.png" alt="heart_rate" id="heart-rate-img">
+                        <h3>心率</h3>
+                    </div>
                     <div class="value" id="heart-rate-value">
                         -- 次/分钟<br>
                     </div>
@@ -121,7 +127,10 @@
         <div class="sleep">
             <div class="module" id="sleep">
                 <div class="filling">
-                    <h3>睡眠</h3>
+                    <div class="info-title">
+                        <img src="public/icon/sleep.png" alt="sleep" id="sleep-img">
+                        <h3>睡眠</h3>
+                    </div>
                     <div class="value" id="sleep-value">
                         -- 小时<br>
                     </div>
@@ -132,7 +141,10 @@
         <div class="steps">
             <div class="module" id="steps">
                 <div class="filling">
-                    <h3>步数</h3>
+                    <div class="info-title">
+                        <img src="public/icon/steps.png" alt="steps" id="steps-img">
+                        <h3>步数</h3>
+                    </div>
                     <div class="value" id="steps-value">
                         -- 步<br>
                     </div>
@@ -142,7 +154,10 @@
         <div class="calories">
             <div class="module" id="calories">
                 <div class="filling">
-                    <h3>卡路里</h3>
+                    <div class="info-title">
+                        <img src="public/icon/calories.png" alt="calories" id="calories-img">
+                        <h3>卡路里</h3>
+                    </div>
                     <div class="value" id="calories-value">
                         -- 千卡
                     </div>
