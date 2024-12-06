@@ -15,7 +15,7 @@ function updateModules(response) {
     if(data.exercise === "{}"){
         $("#exercise-info-value").text("--");
     } else {
-        $("#exercise-info-value").text(`${exerciseJson.name} 时间: ${exerciseJson.time} 卡路里: ${exerciseJson.calories}`);
+        $("#exercise-info-value").text(`${exerciseJson.name} 时长: ${exerciseJson.time} 分钟 卡路里: ${exerciseJson.calories} 千卡`);
     }
     $("#heart-rate-value").text(`${data.restBPM} 次/分钟`);
     $("#sleep-value").text(`${data.sleep} 分钟`);
