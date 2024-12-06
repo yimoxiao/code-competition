@@ -18,20 +18,10 @@
         <div class="title">
             <img src="public/logo.png" alt="logo">
             <p>小米运动健康AI个人助理</p>
-            <span class="username" id="username">用户名: XX</span>
+            
         </div>
-        <div class="date-picker">
-            <label for="date">选择日期：</label>
-            <input type="date" id="date" name="date">
-            <script>
-                const today = new Date();
-                const year = today.getFullYear();
-                const month = String(today.getMonth() + 1).padStart(2, '0');
-                const day = String(today.getDate()).padStart(2, '0');
-                const formattedDate = `${year}-${month}-${day}`;
-                document.getElementById("date").setAttribute("max", formattedDate);
-            </script>
-        </div>
+        <span class="username" id="username">您好: XX</span>
+        
     </div>
     <div class="output">
         <div class="output-box" id="combined-output" style="height: 200px; overflow-y: auto">
@@ -45,14 +35,34 @@
         <button id="get-health-suggestion">获取健康建议</button>
         <button id="get-diet-suggestion">获取饮食建议</button>
         <button id="get-exercise-suggestion">获取运动建议</button>
+        <div class="date-picker">
+            <label for="date">选择日期：</label>
+            <input type="date" id="date" name="date">
+            <script>
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const day = String(today.getDate()).padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+                document.getElementById("date").setAttribute("max", formattedDate);
+            </script>
+        </div>
     </div>
     <div class="diet">
         <div class="module">
-            <h3>今日饮食</h3>
+            <div class="diet-title">
+                <img src="public/icon/diet.png" 
+                alt="diet_info" id="diet-info-img">
+                <h3>今日饮食</h3>
+            </div>
             <div class="diet-list">
                 <div class="breakfast">
                     <div class="module">
-                        <p>早餐</p>
+                        <div class="diet-title">
+                            <img src="public/icon/breakfast.png" 
+                            alt="breakfast_info" id="breakfast-info-img">
+                            <p>早餐</p>
+                        </div>
                         <textarea id="breakfast-recognition"></textarea>
                         <button id="breakfast-button">上传早餐</button>
                         <input id="breakfast-input" type="file" accept="image/*" style="display: none;">
@@ -61,7 +71,11 @@
                 </div>
                 <div class="lunch">
                     <div class="module">
-                        <p>午餐</p>
+                        <div class="diet-title">
+                            <img src="public/icon/lunch.png" 
+                            alt="lunch_info" id="lunch-info-img">
+                            <p>午餐</p>
+                        </div>
                         <textarea id="lunch-recognition"></textarea>
                         <button id="lunch-button">上传午餐</button>
                         <input id="lunch-input" type="file" accept="image/*" style="display: none;">
@@ -70,7 +84,11 @@
                 </div>
                 <div class="dinner">
                     <div class="module">
-                        <p>晚餐</p>
+                        <div class="diet-title">
+                            <img src="public/icon/dinner.png" 
+                            alt="dinner_info" id="dinner-info-img">
+                            <p>晚餐</p>
+                        </div>
                         <textarea id="dinner-recognition"></textarea>
                         <button id="dinner-button">上传晚餐</button>
                         <input id="dinner-input" type="file" accept="image/*" style="display: none;">
