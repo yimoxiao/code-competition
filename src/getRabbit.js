@@ -28,7 +28,6 @@ function getRabbit() {
 function setRabbit(response) {
     console.log("setRabbit");
     const img = "data:image/jpeg;base64," + response.data;
-    console.log(img);
     $("#fit-image").attr("src", img);
 }
 

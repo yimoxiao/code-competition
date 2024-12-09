@@ -1,6 +1,8 @@
 import {typeText} from "./textDisplay.js";
 import {getUsernameFromCookie} from "./cookie.js";
 
+let stopTyping = null;
+
 function fetchSuggestion(route, outputId) {
     const selectedDate = $("#date").val();
     if (!selectedDate) {
@@ -33,8 +35,11 @@ function fetchSuggestion(route, outputId) {
             if (response.error) {
                 alert(response.error);
             } else {
+                if(stopTyping !== null) {
+                    stopTyping();
+                }
                 console.log(response);
-                typeText(outputId, response.data, 100);
+                stopTyping = typeText(outputId, response.data, 60);
             }
         },
         error: function () {
