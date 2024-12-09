@@ -11,6 +11,9 @@ function typeText(elementId, text, speed) {
             element.innerHTML = parsedText;
             index++;
             setTimeout(type, speed);
+        } else {
+            const event = new Event('typeTextFinished');
+            document.dispatchEvent(event);
         }
     }
 
