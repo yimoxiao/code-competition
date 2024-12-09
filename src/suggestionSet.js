@@ -1,8 +1,6 @@
 import {typeText} from "./textDisplay.js";
 import {getUsernameFromCookie} from "./cookie.js";
 
-let isTextOutputting = false;
-
 function fetchSuggestion(route, outputId) {
     const selectedDate = $("#date").val();
     if (!selectedDate) {
@@ -36,7 +34,6 @@ function fetchSuggestion(route, outputId) {
                 alert(response.error);
             } else {
                 console.log(response);
-                isTextOutputting = true;
                 typeText(outputId, response.data, 100);
             }
         },
@@ -48,25 +45,15 @@ function fetchSuggestion(route, outputId) {
 
 function handleSuggestionButtons() {
     $("#get-health-suggestion").click(function () {
-        if (!isTextOutputting) {
-            fetchSuggestion("/get_health_suggestion", "combined-output");
-        }
+        fetchSuggestion("/get_health_suggestion", "combined-output");
     });
 
     $("#get-diet-suggestion").click(function () {
-        if (!isTextOutputting) {
-            fetchSuggestion("/get_diet_suggestion", "combined-output");
-        }
+        fetchSuggestion("/get_diet_suggestion", "combined-output");
     });
 
     $("#get-exercise-suggestion").click(function () {
-        if (!isTextOutputting) {
-            fetchSuggestion("/get_exercise_suggestion", "combined-output");
-        }
-    });
-
-    document.addEventListener('typeTextFinished', function () {
-        isTextOutputting = false;
+        fetchSuggestion("/get_exercise_suggestion", "combined-output");
     });
 }
 
