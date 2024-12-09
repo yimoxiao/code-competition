@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>小米运动健康AI个人助理</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/style_index.css">
@@ -102,29 +102,31 @@
         <!-- 个人信息、今日运动概览 -->
         <div class="personal-info">
             <div class="module" id="personal-info">
+                <div class="info-title">
+                    <img src="public/icon/personal_info.png" alt="personal_info" id="personal-info-img">
+                    <h3>个人信息</h3>
+                </div>
                 <div class="filling">
-                    <div class="info-title">
-                        <img src="public/icon/personal_info.png" alt="personal_info" id="personal-info-img">
-                        <h3>个人信息</h3>
-                    </div>
                     <div class="value" id="personal-info-value">
-                        性别: --<br>
-                        身高: -- cm<br>
-                        体重: -- kg<br>
-                        年龄: -- 岁
+                        <label class="info-label" id="height-label">--</label><label class="unit">/厘米</label>
+                        <label class="info-label" id="weight-label">--</label><label class="unit">/千克</label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="exercise">
             <div class="module" id="exercise-info">
+                <div class="info-title">
+                    <img src="public/icon/exercise.png" alt="exercise" id="exercise-img">
+                    <h3>运动</h3>
+                </div>
                 <div class="filling">
-                    <div class="info-title">
-                        <img src="public/icon/exercise.png" alt="exercise" id="exercise-img">
-                        <h3>运动</h3>
-                    </div>
                     <div class="value" id="exercise-info-value">
-                        --
+                        <label class="exercise-item" id="exercise-item-label"></label>
+                        <label class="info-label" id="execrise-time-label">--</label>
+                        <label class="unit">/分钟</label>
+                        <label class="info-label" id="execrise-calories-label">--</label>
+                        <label class="unit">/千卡</label>
                     </div>
                 </div>
             </div>
@@ -132,26 +134,28 @@
         <!-- 心率概览和睡眠概览 -->
         <div class="heart-rate">
             <div class="module" id="heart-rate">
+                <div class="info-title">
+                    <img src="public/icon/heart_rate.png" alt="heart_rate" id="heart-rate-img">
+                    <h3>心率</h3>
+                </div>
                 <div class="filling">
-                    <div class="info-title">
-                        <img src="public/icon/heart_rate.png" alt="heart_rate" id="heart-rate-img">
-                        <h3>心率</h3>
-                    </div>
                     <div class="value" id="heart-rate-value">
-                        -- 次/分钟<br>
+                        <label class="info-label" id="heart-rate-label">--</label>
+                        <label class="unit">/分钟</label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="sleep">
             <div class="module" id="sleep">
+                <div class="info-title">
+                    <img src="public/icon/sleep.png" alt="sleep" id="sleep-img">
+                    <h3>睡眠</h3>
+                </div>
                 <div class="filling">
-                    <div class="info-title">
-                        <img src="public/icon/sleep.png" alt="sleep" id="sleep-img">
-                        <h3>睡眠</h3>
-                    </div>
                     <div class="value" id="sleep-value">
-                        -- 小时<br>
+                        <label class="info-label" id="sleep-label">--</label>
+                        <label class="unit">/分钟</label>
                     </div>
                 </div>
             </div>
@@ -159,26 +163,28 @@
         <!-- 步数概览和卡路里概览 -->
         <div class="steps">
             <div class="module" id="steps">
+                <div class="info-title">
+                    <img src="public/icon/steps.png" alt="steps" id="steps-img">
+                    <h3>步数</h3>
+                </div>
                 <div class="filling">
-                    <div class="info-title">
-                        <img src="public/icon/steps.png" alt="steps" id="steps-img">
-                        <h3>步数</h3>
-                    </div>
                     <div class="value" id="steps-value">
-                        -- 步<br>
+                        <label class="info-label" id="steps-label">--</label>
+                        <label class="unit">/步</label>
                     </div>
                 </div>
             </div>
         </div>
         <div class="calories">
             <div class="module" id="calories">
+                <div class="info-title">
+                    <img src="public/icon/calories.png" alt="calories" id="calories-img">
+                    <h3>卡路里</h3>
+                </div>
                 <div class="filling">
-                    <div class="info-title">
-                        <img src="public/icon/calories.png" alt="calories" id="calories-img">
-                        <h3>卡路里</h3>
-                    </div>
                     <div class="value" id="calories-value">
-                        -- 千卡
+                        <label class="info-label" id="calories-label">--</label>
+                        <label class="unit">/千卡</label>
                     </div>
                 </div>
             </div>

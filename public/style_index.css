@@ -286,7 +286,24 @@ body {
 }
 
 .filling {
-    height: 120px;
+    height: 100px;
     text-align: center;
     line-height: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-label {
+    color: #f7941d;
+    font-size: 50px;
+}
+
+.unit {
+    margin-right: 10px;
+}
+
+.exercise-item {
+    color: #80756a;
+    font-size: 25px;
 }

@@ -4,24 +4,21 @@ function updateModules(response) {
     if(data.sex === "male") {
         sex = "男";
     }
-    $("#personal-info-value").html(
-        `身高: ${data.height} cm<br>
-        体重: ${data.weight} kg<br>
-        性别: ${sex}<br>
-        年龄：${data.age}`
-    );
+    $("#height-label").text(`${data.height}`);
+    $("#weight-label").text(`${data.weight}`);
     const str = data.exercise;
     const fixStr = str.replace(/'/g, '"');
     const exerciseJson = JSON.parse(fixStr);
     if(data.exercise === "{}"){
-        $("#exercise-info-value").text("--");
     } else {
-        $("#exercise-info-value").text(`${exerciseJson.name} 时长: ${exerciseJson.time} 分钟 卡路里: ${exerciseJson.calories} 千卡`);
+        $("#exercise-item-label").text(`${exerciseJson.name}`);
+        $("#execrise-time-label").text(`${exerciseJson.time}`);
+        $("#execrise-calories-label").text(`${exerciseJson.calories}`);
     }
-    $("#heart-rate-value").text(`${data.restBPM} 次/分钟`);
-    $("#sleep-value").text(`${data.sleep} 分钟`);
-    $("#steps-value").text(`${data.steps} 步`);
-    $("#calories-value").text(`${data.calories} 千卡`);
+    $("#heart-rate-label").text(`${data.restBPM}`);
+    $("#sleep-label").text(`${data.sleep}`);
+    $("#steps-label").text(`${data.steps}`);
+    $("#calories-label").text(`${data.calories}`);
 }
 
 function setBreakfastImgAnalyze(response) {
