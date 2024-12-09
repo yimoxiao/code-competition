@@ -7,7 +7,8 @@ function updateModules(response) {
     $("#personal-info-value").html(
         `身高: ${data.height} cm<br>
         体重: ${data.weight} kg<br>
-        性别: ${sex}`
+        性别: ${sex}<br>
+        年龄：${data.age}`
     );
     const str = data.exercise;
     const fixStr = str.replace(/'/g, '"');
