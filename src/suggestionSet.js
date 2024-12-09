@@ -39,7 +39,7 @@ function fetchSuggestion(route, outputId) {
                     stopTyping();
                 }
                 console.log(response);
-                stopTyping = typeText(outputId, response.data, 60);
+                stopTyping = typeText(outputId, response.data, 30);
             }
         },
         error: function () {
