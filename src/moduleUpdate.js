@@ -21,7 +21,6 @@ function updateModules(response) {
     $("#sleep-value").text(`${data.sleep} 分钟`);
     $("#steps-value").text(`${data.steps} 步`);
     $("#calories-value").text(`${data.calories} 千卡`);
-    $("#fit-image").attr("src", "public/fit_rabbit/" + data.emotion + ".png");
 }
 
 function setBreakfastImgAnalyze(response) {
