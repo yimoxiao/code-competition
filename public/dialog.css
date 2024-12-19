@@ -1,0 +1,145 @@
+/* 弹窗背景遮罩层 */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none; /* 默认隐藏 */
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+/* 弹窗内容 */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    padding-top: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 420px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%); /* 背景渐变效果 */
+}
+
+/* 标头 */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #f4ab56;
+    margin-bottom: 8px;
+}
+
+.modal-header span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* 关闭按钮 */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: #333;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #e17272;
+}
+
+/* 聊天框 */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* 消息区域 */
+.messages {
+    width: 100%;
+    height: 300px;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    padding-right: 10px;
+}
+
+.message {
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    max-width: 100%;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+}
+
+/* 用户消息 */
+.user {
+    background-color: #DCF8C6;
+    text-align: right;
+    margin-left: 50px;
+}
+
+/* GPT 消息 */
+.bot {
+    background-color: #F1F0F0;
+    text-align: left;
+    margin-right: 50px;
+}
+
+/* 图标样式 */
+.message .icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 12px;
+}
+
+/* 输入框和按钮 */
+.input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: none;
+    font-size: 14px;
+    color: #333;
+    background-color: #f7f7f7;
+}
+
+textarea:focus {
+    outline: none; /* 移除聚焦时的默认轮廓 */
+    border-color: #ccc; /* 保持边框颜色，或者根据需求设置颜色 */
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #f4ab56;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}

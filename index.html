@@ -6,11 +6,13 @@
     <title>小米运动健康AI个人助理</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/style_index.css">
+    <link rel="stylesheet" href="public/dialog.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
     <script type="module" src="src/index.js"></script>
     <script type="module" src="src/main.js"></script>
     <script type="module" src="src/upLoadImg.js"></script>
+    <script type="module" src="src/dialog.js"></script>
 </head>
 <body>
 <div class="container">
@@ -18,7 +20,6 @@
         <div class="title">
             <img src="public/logo.png" alt="logo">
             <p>小米运动健康AI个人助理 — FitBunny</p>
-            
         </div>
         <span class="username" id="username">您好: XX</span>
         
@@ -35,6 +36,7 @@
         <button id="get-health-suggestion">获取健康建议</button>
         <button id="get-diet-suggestion">获取饮食建议</button>
         <button id="get-exercise-suggestion">获取运动建议</button>
+        <button id="openChatBtn">开启对话</button>
         <div class="date-picker">
             <label for="date">选择日期：</label>
             <input type="date" id="date" name="date" min="2024-11-14", max = "2020-12-31" required>
@@ -191,5 +193,24 @@
         </div>
     </div>
 </div>
+
+<!-- 聊天弹窗 -->
+<div id="chatModal" class="modal-overlay">
+    <div class="modal-content">
+        <!-- 标头 -->
+        <div class="modal-header">
+            <span>聊天对话</span>
+            <button class="close-btn" id="closeChatBtn">×</button>
+        </div>
+        <div class="chat-container">
+            <div class="messages" id="messages"></div>
+            <div class="input-container">
+                <textarea id="userInput" placeholder="请输入你的消息..." rows="2"></textarea>
+                <button id="sendButton">发送</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
