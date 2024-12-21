@@ -5,6 +5,7 @@ let stopTyping = null;
 
 function fetchSuggestion(route, outputId) {
     const selectedDate = $("#date").val();
+    const exerciseChoice = $("#exerciseChoice").val();
     if (!selectedDate) {
         alert("请选择一个日期！");
         return;
@@ -12,12 +13,41 @@ function fetchSuggestion(route, outputId) {
     var data;
     const username = getUsernameFromCookie();
     if(route === "/get_health_suggestion") {
-        data = { date: selectedDate , user_name: username , cache : false};
+        data = {
+            date: selectedDate,
+            user_name: username,
+            cache : false
+        };
     } else if(route === "/get_diet_suggestion") {
+        if (exerciseChoice === "默认") {
+            alert("请先进行运动选择，再获取饮食建议！");
+            return;
+        }
         const food1 = $("#breakfast-recognition").val();
         const food2 = $("#lunch-recognition").val();
         const food3 = $("#dinner-recognition").val();
-        data = {date: selectedDate , user_name: username , food1: food1, food2: food2, food3 : food3, cache : false};
+        data = {
+            date: selectedDate,
+            user_name: username,
+            exercise_choice: exerciseChoice,
+            food1: food1,
+            food2: food2,
+            food3 : food3,
+            cache : false
+        };
+        console.log(data);
+    } else if (route === "/get_exercise_suggestion") {
+        // console.log(exerciseChoice);
+        if (exerciseChoice === "默认") {
+            alert("请先进行运动选择，再获取饮食建议！");
+            return;
+        }
+        data = {
+            date: selectedDate,
+            user_name: username,
+            exercise_choice: exerciseChoice,
+            cache: false
+        };
         console.log(data);
     } else {
         var aim =  $("#exercise-info-value").text();
