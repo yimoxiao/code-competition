@@ -1,5 +1,6 @@
 import {typeText} from "./textDisplay.js";
 import {getUsernameFromCookie} from "./cookie.js";
+import {clearHistory, pushReplyHistory} from "./dialog.js";
 
 let stopTyping = null;
 
@@ -69,7 +70,9 @@ function fetchSuggestion(route, outputId) {
                     stopTyping();
                 }
                 console.log(response);
-                stopTyping = typeText(outputId, response.data, 30);
+                clearHistory();
+                pushReplyHistory(response.data);
+                stopTyping = typeText(outputId, response.data, 30, true);
             }
         },
         error: function () {

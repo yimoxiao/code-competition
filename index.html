@@ -6,7 +6,7 @@
     <title>小米运动健康AI个人助理</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/style_index.css">
-    <link rel="stylesheet" href="public/dialog.css">
+    <link rel="stylesheet" href="public/style_dialog.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
     <script type="module" src="src/index.js"></script>
@@ -36,9 +36,8 @@
         <button id="get-health-suggestion">健康建议</button>
         <button id="get-diet-suggestion">饮食建议</button>
         <button id="get-exercise-suggestion">运动建议</button>
-        <button id="openChatBtn">开启对话</button>
-        <select id="exerciseChoice" name="exerciseChoice1">
-            <option value="默认" >运动选择</option>
+        <select id="exerciseChoice" name="exerciseChoice1" style="outline: none;">
+            <option value="默认" >运动目标</option>
             <option value="保持健康">保持健康</option>
             <option value="燃烧脂肪">燃烧脂肪</option>
             <option value="增肌塑形">增肌塑形</option>

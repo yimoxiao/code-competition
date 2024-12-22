@@ -1,5 +1,4 @@
 const chatModal = document.getElementById('chatModal');
-const openChatBtn = document.getElementById('openChatBtn');
 const closeChatBtn = document.getElementById('closeChatBtn');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
@@ -7,6 +6,8 @@ const messagesContainer = document.getElementById('messages');
 
 // 用于保存对话记录
 let conversationHistory = [];
+let replyHistory = [];
+let inputHistory = [];
 
 function updateChat() {
     messagesContainer.innerHTML = '';
@@ -30,16 +31,6 @@ function updateChat() {
     messagesContainer.scrollTop = messagesContainer.scrollHeight;
 }
 
-// 打开弹窗
-openChatBtn.addEventListener('click', () => {
-    const selectedDate = $("#date").val();
-    if (!selectedDate) {
-        alert("请选择一个日期！");
-        return;
-    }
-    chatModal.style.display = 'flex';
-});
-
 sendButton.addEventListener('click', () => {
     sendMessage();
 });
@@ -61,29 +52,28 @@ function enableInput() {
 }
 
 function typeMessage(message, sender) {
-    return new Promise((resolve) => {
-        let index = 0;
-        const textElement = document.createElement('span');
-        const messageElement = document.createElement('div');
-        messageElement.className = `message ${sender}`;
+    let index = 0;
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${sender}`;
 
-        // const iconElement = document.createElement('img');
-        // iconElement.className = 'icon';
-        // iconElement.src = sender === 'user' ? 'user-icon.png' : 'gpt-icon.png';
+    messagesContainer.appendChild(messageElement);
 
-        // messageElement.appendChild(iconElement);
-        messageElement.appendChild(textElement);
-        messagesContainer.appendChild(messageElement);
+    messageElement.innerHTML = "";
 
-        const interval = setInterval(() => {
-            textElement.textContent += message[index];
+    function type() {
+        if (index < message.length) {
+            // 解析为md格式
+            const parsedText = marked(message.slice(0, index + 1));
+            messageElement.innerHTML = parsedText;
             index++;
-            if (index === message.length) {
-                clearInterval(interval);
-                resolve();
-            }
-        }, 50);
-    });
+            setTimeout(type, 30);
+        }
+        if(index === message.length) {
+            enableInput();
+        }
+    }
+
+    type();
 }
 
 // 发送消息
@@ -92,30 +82,39 @@ function sendMessage() {
     const userMessage = userInput.value.trim();
     if (!userMessage) return;
 
+    pushInputHistory(userMessage);
     disableInput();
 
     // 显示用户消息
-    conversationHistory.push({ sender: 'user', text: userMessage });
+    conversationHistory.push({sender: 'user', text: userMessage});
     updateChat();
 
     userInput.value = '';
-
-    fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMessage, conversation: conversationHistory })
-    })
-        .then(response => response.json())
-        .then(data => {
-            conversationHistory.push({ sender: 'bot', text: data.reply });
-            typeMessage(data.reply, 'bot').then(() => {
+    console.log(replyHistory);
+    console.log(inputHistory);
+    $.ajax({
+        url: 'http://10.189.140.61:18080/get_more_suggestion',
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(
+            {model_response: replyHistory, user_input: inputHistory}
+        ),
+        success: function (response) {
+            if (response.error) {
+                alert(response.error);
                 enableInput();
-            });
-        })
-        .catch(error => {
-            console.error('Error:', error);
+            } else {
+                console.log(response);
+                pushReplyHistory(response.data);
+                conversationHistory.push({sender: 'bot', text: response.data});
+                typeMessage(response.data, 'bot');
+            }
+        },
+        error: function () {
+            alert("请求失败，请稍后重试！");
             enableInput();
-        });
+        }
+    });
 }
 
 // 关闭聊天弹窗
@@ -129,3 +128,20 @@ chatModal.addEventListener('click', (event) => {
         closeChat();
     }
 });
+
+function clearHistory() {
+    conversationHistory.splice(0, conversationHistory.length);
+    replyHistory.splice(0, replyHistory.length);
+    inputHistory.splice(0, inputHistory.length);
+    messagesContainer.innerHTML = '';
+}
+
+function pushReplyHistory(history) {
+    replyHistory.push(history);
+}
+
+function pushInputHistory(history) {
+    inputHistory.push(history);
+}
+
+export {pushReplyHistory, clearHistory};

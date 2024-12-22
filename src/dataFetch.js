@@ -3,6 +3,7 @@ import { updateModules } from './moduleUpdate.js';
 import {getUsernameFromCookie} from "./cookie.js";
 import {getBreakfast, getDinner, getLunch} from "./upLoadImg.js";
 import {getRabbit} from "./getRabbit.js";
+import {clearHistory} from "./dialog.js";
 
 function handleDateChange() {
     $("#date").change(function () {
@@ -28,6 +29,7 @@ function handleDateChange() {
                     getLunch(true);
                     getDinner(true);
                     getRabbit();
+                    clearHistory();
                 }
             },
             error: function () {
