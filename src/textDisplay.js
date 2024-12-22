@@ -1,5 +1,5 @@
 const chatModal = document.getElementById('chatModal');
-function typeText(elementId, text, speed, flag = true) {
+function typeText(elementId, text, speed, flag = false) {
     const element = document.getElementById(elementId);
     element.innerHTML = "";
     let index = 0;
