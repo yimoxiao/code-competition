@@ -91,12 +91,20 @@ function getBreakfast(is_active = false) {
     console.log("getBreakfast");
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
+    if(!is_active) {
+        const loading = document.getElementById('breakfast-loading');
+        loading.style.display = 'flex';
+    }
     $.ajax({
         url: "http://10.189.140.61:18080/get_breakfast",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({date: date , user_name: username, cache: is_active}),
         success: function (response) {
+            if(!is_active){
+                const loading = document.getElementById('breakfast-loading');
+                loading.style.display = 'none';
+            }
             if (response.error) {
                 alert(response.error);
             } else {
@@ -105,7 +113,10 @@ function getBreakfast(is_active = false) {
             }
         },
         error: function () {
-
+            if(!is_active) {
+                const loading = document.getElementById('breakfast-loading');
+                loading.style.display = 'none';
+            }
         }
     });
 }
@@ -114,6 +125,10 @@ function getLunch(is_active = false) {
     console.log("getLunch");
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
+    if(!is_active) {
+        const loading = document.getElementById('lunch-loading');
+        loading.style.display = 'flex';
+    }
     $.ajax({
         url: "http://10.189.140.61:18080/get_lunch",
         type: "POST",
@@ -123,6 +138,10 @@ function getLunch(is_active = false) {
             withCredentials: true
         },
         success: function (response) {
+            if(!is_active) {
+                const loading = document.getElementById('lunch-loading');
+                loading.style.display = 'none';
+            }
             if (response.error) {
                 alert(response.error);
             } else {
@@ -131,7 +150,10 @@ function getLunch(is_active = false) {
             }
         },
         error: function () {
-
+            if(!is_active) {
+                const loading = document.getElementById('lunch-loading');
+                loading.style.display = 'none';
+            }
         }
     });
 }
@@ -140,6 +162,10 @@ function getDinner(is_active = false) {
     console.log("getDinner");
     const date = document.getElementById('date').value;
     const username = getUsernameFromCookie();
+    if(!is_active) {
+        const loading = document.getElementById('dinner-loading');
+        loading.style.display = 'flex';
+    }
     $.ajax({
         url: "http://10.189.140.61:18080/get_dinner",
         type: "POST",
@@ -149,6 +175,10 @@ function getDinner(is_active = false) {
             withCredentials: true
         },
         success: function (response) {
+            if(!is_active) {
+                const loading = document.getElementById('dinner-loading');
+                loading.style.display = 'none';
+            }
             if (response.error) {
                 alert(response.error);
             } else {
@@ -157,7 +187,10 @@ function getDinner(is_active = false) {
             }
         },
         error: function () {
-
+            if(!is_active) {
+                const loading = document.getElementById('dinner-loading');
+                loading.style.display = 'none';
+            }
         }
     });
 }

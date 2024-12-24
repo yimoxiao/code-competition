@@ -60,6 +60,7 @@ function typeMessage(message, sender) {
             // 解析为md格式
             const parsedText = marked(message.slice(0, index + 1));
             messageElement.innerHTML = parsedText;
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
             index++;
             setTimeout(type, 30);
         }

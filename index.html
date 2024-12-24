@@ -22,7 +22,7 @@
             <p>小米运动健康AI个人助理 — FitBunny</p>
         </div>
         <span class="username" id="username">您好: XX</span>
-        
+
     </div>
     <div class="output">
         <div class="output-box" id="combined-output" style="height: 200px; overflow-y: auto">
@@ -37,7 +37,7 @@
         <button id="get-diet-suggestion">饮食追踪</button>
         <button id="get-exercise-suggestion">运动指导</button>
         <select id="exerciseChoice" name="exerciseChoice1" style="outline: none;">
-            <option value="默认" >健身目标</option>
+            <option value="默认">健身目标</option>
             <option value="保持健康">保持健康</option>
             <option value="燃烧脂肪">燃烧脂肪</option>
             <option value="增肌塑形">增肌塑形</option>
@@ -46,7 +46,7 @@
         </select>
         <div class="date-picker">
             <label for="date">选择日期：</label>
-            <input type="date" id="date" name="date" min="2024-11-14", max = "2020-12-31" required>
+            <input type="date" id="date" name="date" min="2024-11-14" , max="2020-12-31" required>
             <script>
                 const today = new Date();
                 const year = today.getFullYear();
@@ -60,48 +60,63 @@
     <div class="diet">
         <div class="module">
             <div class="diet-title">
-                <img src="public/icon/diet.png" 
-                alt="diet_info" id="diet-info-img">
+                <img src="public/icon/diet.png"
+                     alt="diet_info" id="diet-info-img">
                 <h3>今日饮食</h3>
             </div>
             <div class="diet-list">
                 <div class="breakfast">
                     <div class="module">
                         <div class="diet-title">
-                            <img src="public/icon/breakfast.png" 
-                            alt="breakfast_info" id="breakfast-info-img">
+                            <img src="public/icon/breakfast.png"
+                                 alt="breakfast_info" id="breakfast-info-img">
                             <p>早餐</p>
                         </div>
-                        <textarea id="breakfast-recognition"></textarea>
-                        <button id="breakfast-button">上传早餐</button>
-                        <input id="breakfast-input" type="file" accept="image/*" style="display: none;">
-                        <button id="breakfast-calibration">校准早餐</button>
+                        <div class="loading-div">
+                            <textarea id="breakfast-recognition"></textarea>
+                            <button id="breakfast-button">上传早餐</button>
+                            <input id="breakfast-input" type="file" accept="image/*" style="display: none;">
+                            <button id="breakfast-calibration">校准早餐</button>
+                            <div class="loadingOverlay" id="breakfast-loading">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="lunch">
                     <div class="module">
                         <div class="diet-title">
-                            <img src="public/icon/lunch.png" 
-                            alt="lunch_info" id="lunch-info-img">
+                            <img src="public/icon/lunch.png"
+                                 alt="lunch_info" id="lunch-info-img">
                             <p>午餐</p>
                         </div>
-                        <textarea id="lunch-recognition"></textarea>
-                        <button id="lunch-button">上传午餐</button>
-                        <input id="lunch-input" type="file" accept="image/*" style="display: none;">
-                        <button id="lunch-calibration">校准午餐</button>
+                        <div class="loading-div">
+                            <textarea id="lunch-recognition"></textarea>
+                            <button id="lunch-button">上传午餐</button>
+                            <input id="lunch-input" type="file" accept="image/*" style="display: none;">
+                            <button id="lunch-calibration">校准午餐</button>
+                            <div class="loadingOverlay" id="lunch-loading">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="dinner">
                     <div class="module">
                         <div class="diet-title">
-                            <img src="public/icon/dinner.png" 
-                            alt="dinner_info" id="dinner-info-img">
+                            <img src="public/icon/dinner.png"
+                                 alt="dinner_info" id="dinner-info-img">
                             <p>晚餐</p>
                         </div>
-                        <textarea id="dinner-recognition"></textarea>
-                        <button id="dinner-button">上传晚餐</button>
-                        <input id="dinner-input" type="file" accept="image/*" style="display: none;">
-                        <button id="dinner-calibration">校准晚餐</button>
+                        <div class="loading-div">
+                            <textarea id="dinner-recognition"></textarea>
+                            <button id="dinner-button">上传晚餐</button>
+                            <input id="dinner-input" type="file" accept="image/*" style="display: none;">
+                            <button id="dinner-calibration">校准晚餐</button>
+                            <div class="loadingOverlay" id="dinner-loading">
+                                <div class="loading-spinner"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
