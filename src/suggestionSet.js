@@ -13,13 +13,13 @@ function fetchSuggestion(route, outputId) {
     }
     var data;
     const username = getUsernameFromCookie();
-    if(route === "/get_health_suggestion") {
+    if (route === "/get_health_suggestion") {
         data = {
             date: selectedDate,
             user_name: username,
-            cache : false
+            cache: false
         };
-    } else if(route === "/get_diet_suggestion") {
+    } else if (route === "/get_diet_suggestion") {
         if (exerciseChoice === "默认") {
             alert("请先选择健身目标，再获取饮食追踪结果。");
             return;
@@ -33,8 +33,8 @@ function fetchSuggestion(route, outputId) {
             exercise_choice: exerciseChoice,
             food1: food1,
             food2: food2,
-            food3 : food3,
-            cache : false
+            food3: food3,
+            cache: false
         };
         console.log(data);
     } else if (route === "/get_exercise_suggestion") {
@@ -50,23 +50,29 @@ function fetchSuggestion(route, outputId) {
             cache: false
         };
         console.log(data);
-    } else {
-        var aim =  $("#exercise-info-value").text();
-        if(aim === "--" ){
-            aim = "";
-        }
-        data = {date: selectedDate , user_name: username , aim: aim, cache : false};
     }
+    const element = document.getElementById(outputId);
+    element.innerHTML = "";
+    const loaderHtml = `
+                <div class="loader-container" id="output-loading">
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                    <div class="circle"></div>
+                </div>
+            `;
+    $("#combined-output").append(loaderHtml);
     $.ajax({
         url: 'http://10.189.140.61:18080' + route,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function (response) {
+            const element = document.getElementById(outputId);
+            element.innerHTML = "";
             if (response.error) {
                 alert(response.error);
             } else {
-                if(stopTyping !== null) {
+                if (stopTyping !== null) {
                     stopTyping();
                 }
                 console.log(response);
@@ -76,6 +82,8 @@ function fetchSuggestion(route, outputId) {
             }
         },
         error: function () {
+            const element = document.getElementById(outputId);
+            element.innerHTML = "";
             alert("请求失败，请稍后重试！");
         }
     });
