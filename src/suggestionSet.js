@@ -21,7 +21,7 @@ function fetchSuggestion(route, outputId) {
         };
     } else if(route === "/get_diet_suggestion") {
         if (exerciseChoice === "默认") {
-            alert("请先进行运动选择，再获取饮食建议！");
+            alert("请先选择健身目标，再获取饮食追踪结果。");
             return;
         }
         const food1 = $("#breakfast-recognition").val();
@@ -40,7 +40,7 @@ function fetchSuggestion(route, outputId) {
     } else if (route === "/get_exercise_suggestion") {
         // console.log(exerciseChoice);
         if (exerciseChoice === "默认") {
-            alert("请先进行运动选择，再获取饮食建议！");
+            alert("请先选择健身目标，再获取运动指导结果。");
             return;
         }
         data = {
