@@ -54,10 +54,10 @@ function fetchSuggestion(route, outputId) {
     const element = document.getElementById(outputId);
     element.innerHTML = "";
     const loaderHtml = `
-                <div class="loader-container" id="output-loading">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
+                <div class="output-loading" id="output-loading">
+                    <div class="output-loading-circle"></div>
+                    <div class="output-loading-circle"></div>
+                    <div class="output-loading-circle"></div>
                 </div>
             `;
     $("#combined-output").append(loaderHtml);

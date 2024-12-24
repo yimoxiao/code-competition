@@ -4,6 +4,7 @@ const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 const messagesContainer = document.getElementById('messages');
 
+var messageElement;
 // 用于保存对话记录
 let conversationHistory = [];
 let replyHistory = [];
@@ -48,10 +49,6 @@ function enableInput() {
 
 function typeMessage(message, sender) {
     let index = 0;
-    const messageElement = document.createElement('div');
-    messageElement.className = `message ${sender}`;
-
-    messagesContainer.appendChild(messageElement);
 
     messageElement.innerHTML = "";
 
@@ -86,6 +83,20 @@ function sendMessage() {
     userInput.value = '';
     console.log(replyHistory);
     console.log(inputHistory);
+    messageElement = document.createElement('div');
+    messageElement.className = `message bot`;
+    messagesContainer.appendChild(messageElement);
+
+    const loaderContainer = document.createElement("div");
+    loaderContainer.classList.add("dialog-loading");
+    for (let i = 0; i < 3; i++) {
+        const circle = document.createElement("div");
+        circle.classList.add("dialog-loading-circle");
+        loaderContainer.appendChild(circle);
+    }
+    messageElement.appendChild(loaderContainer);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
     $.ajax({
         url: 'http://10.189.140.61:18080/get_more_suggestion',
         type: "POST",
