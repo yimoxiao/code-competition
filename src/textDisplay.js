@@ -10,6 +10,7 @@ function typeText(elementId, text, speed, flag = false) {
             // 解析为md格式
             const parsedText = marked(text.slice(0, index + 1));
             element.innerHTML = parsedText;
+            element.scrollTop = element.scrollHeight;
             if(flag&&(index === text.length - 1)) {
                 element.innerHTML = parsedText + "<div class='more-suggestion-div'>" +
                     "点击按钮开启自由对话" + "<button id='more-button'>自由对话</button>"

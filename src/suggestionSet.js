@@ -72,7 +72,7 @@ function fetchSuggestion(route, outputId) {
                 console.log(response);
                 clearHistory();
                 pushReplyHistory(response.data);
-                stopTyping = typeText(outputId, response.data, 30, true);
+                stopTyping = typeText(outputId, response.data, 20, true);
             }
         },
         error: function () {
